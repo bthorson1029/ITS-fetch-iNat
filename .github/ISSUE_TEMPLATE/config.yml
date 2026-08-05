@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: iNaturalist Forum
+    url: https://forum.inaturalist.org
+    about: Questions about iNaturalist data, observation fields, or the API itself — not about this tool.
