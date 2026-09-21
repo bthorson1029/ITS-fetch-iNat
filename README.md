@@ -64,7 +64,7 @@ pulls barcodes for the whole clade in one pass.
 | Flag | Required | Default | Description |
 | --- | --- | --- | --- |
 | `--taxon-id` | **yes** | — | iNaturalist numeric taxon ID, from the taxon page URL. |
-| `--output` | no | `barcodes_<taxon_id>_<binomial>.fasta` | Output FASTA filename. Only the filename is used; see the note below. |
+| `--output` | no | `<binomial>_<taxon_id>.fasta` | Output FASTA filename. Only the filename is used; see the note below. |
 | `--field-id` | no | `2330` | iNaturalist observation field ID for the barcode. |
 | `--field-name` | no | `"DNA Barcode ITS"` | Observation field name, used as a fallback match and as the server-side filter. |
 

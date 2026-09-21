@@ -16,7 +16,7 @@ Arguments:
                   Find it in the taxon URL: inaturalist.org/taxa/<ID>
     --output      (optional) Output FASTA filename. Only the filename is used;
                   the file is always written inside the iNat-barcodes/ folder.
-                  Defaults to: barcodes_<taxon_id>_<binomial>.fasta
+                  Defaults to: <binomial>_<taxon_id>.fasta
     --field-id    (optional) iNaturalist observation field ID for the barcode.
                   Defaults to 2330 (DNA Barcode ITS).
     --field-name  (optional) Observation field name used as a fallback match.
@@ -69,7 +69,7 @@ def parse_args() -> argparse.Namespace:
         type=str,
         default=None,
         help="Output FASTA filename (written inside iNat-barcodes/). "
-             "Defaults to barcodes_<taxon_id>_<binomial>.fasta.",
+             "Defaults to <binomial>_<taxon_id>.fasta.",
     )
     parser.add_argument(
         "--field-id",
@@ -226,12 +226,12 @@ def main():
     else:
         print(binomial or "not found.")
 
-    # Build the output path: <iNat-barcodes>/barcodes_<taxon_id>_<binomial>.fasta
+    # Build the output path: <iNat-barcodes>/<binomial>_<taxon_id>.fasta
     if args.output:
         filename = os.path.basename(args.output)
     else:
-        suffix   = f"_{sanitize_for_filename(binomial)}" if binomial else ""
-        filename = f"barcodes_{taxon_id}{suffix}.fasta"
+        prefix   = f"{sanitize_for_filename(binomial)}_" if binomial else "taxon_"
+        filename = f"{prefix}{taxon_id}.fasta"
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     output = os.path.join(OUTPUT_DIR, filename)

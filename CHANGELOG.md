@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Default output filename is now `<binomial>_<taxon_id>.fasta` (was
+  `barcodes_<taxon_id>_<binomial>.fasta`), so files sort by taxon name. When the taxon name
+  cannot be resolved the file is named `taxon_<taxon_id>.fasta`.
+
 ## [0.1.0] - 2026-08-04
 
 Initial public release.
